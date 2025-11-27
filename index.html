@@ -6,7 +6,7 @@
     <title>匕首心卡牌工坊</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
-      // Global Error Handler for startup crashes (prevents silent black screen)
+      // Global Error Handler for startup crashes
       window.onerror = function(message, source, lineno, colno, error) {
         const root = document.getElementById('root');
         if (root && (!root.innerHTML || root.innerHTML === '')) {
@@ -15,6 +15,7 @@
               <h2 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">Startup Error</h2>
               <p>The application failed to start.</p>
               <pre style="background: #27272a; padding: 1rem; border-radius: 0.5rem; overflow: auto; margin-top: 1rem;">${message}\n\n${error?.stack || ''}</pre>
+              <p style="margin-top: 1rem; color: #a1a1aa;">Tip: Check your browser console (F12) for 404 errors on .tsx files.</p>
             </div>
           `;
         }
@@ -79,7 +80,11 @@
         font-family: 'Noto Sans SC', sans-serif;
       }
     </style>
-    <!-- Use esm.sh for stable, public module loading compatible with GitHub Pages -->
+    
+    <!-- Babel for in-browser compilation of TSX -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+    <!-- Use esm.sh for stable, public module loading -->
 
   <link rel="stylesheet" href="/index.css">
     <script type="importmap">
@@ -99,5 +104,7 @@
 </head>
   <body class="bg-gray-50 text-slate-800 dark:bg-zinc-950 dark:text-zinc-200 min-h-screen antialiased selection:bg-indigo-500/30 selection:text-indigo-600 dark:selection:bg-amber-500/30 dark:selection:text-amber-400 transition-colors duration-300">
     <div id="root"></div>
+    <!-- Note: data-type="module" is required for Babel to handle ES6 imports inside TSX -->
+    <script type="text/babel" data-type="module" src="./index.tsx"></script>
 </body>
 </html>
