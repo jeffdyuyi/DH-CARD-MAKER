@@ -4,53 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>匕首心卡牌工坊</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-      // Global Error Handler for startup crashes
-      window.onerror = function(message, source, lineno, colno, error) {
-        const root = document.getElementById('root');
-        if (root && (!root.innerHTML || root.innerHTML === '')) {
-          root.innerHTML = `
-            <div style="color: #ef4444; padding: 20px; font-family: monospace; background: #18181b; height: 100vh;">
-              <h2 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">Startup Error</h2>
-              <p>The application failed to start.</p>
-              <pre style="background: #27272a; padding: 1rem; border-radius: 0.5rem; overflow: auto; margin-top: 1rem;">${message}\n\n${error?.stack || ''}</pre>
-              <p style="margin-top: 1rem; color: #a1a1aa;">Tip: Check your browser console (F12) for 404 errors on .tsx files.</p>
-            </div>
-          `;
-        }
-      };
-
-      tailwind.config = {
-        darkMode: 'class',
-        theme: {
-          extend: {
-            colors: {
-              zinc: {
-                850: '#1f1f22',
-                950: '#09090b',
-              },
-              primary: {
-                500: '#3b82f6',
-                600: '#2563eb',
-              },
-              surface: {
-                light: '#ffffff',
-                dark: '#18181b',
-              }
-            },
-            fontFamily: {
-              sans: ['"Noto Sans SC"', 'system-ui', 'sans-serif'],
-              serif: ['"Noto Serif SC"', 'serif'],
-            },
-            boxShadow: {
-              'glow': '0 0 20px -5px rgba(59, 130, 246, 0.5)',
-              'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
-            }
-          }
-        }
-      }
-    </script>
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -80,23 +33,32 @@
         font-family: 'Noto Sans SC', sans-serif;
       }
     </style>
-    
-    <!-- Babel for in-browser compilation of TSX -->
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+       tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              zinc: {
+                850: '#1f1f22',
+                950: '#09090b',
+              }
+            }
+          }
+        }
+      }
+    </script>
 
-    <!-- Use esm.sh for stable, public module loading -->
-
-  <link rel="stylesheet" href="/index.css">
-    <script type="importmap">
+<link rel="stylesheet" href="/index.css">
+  <script type="importmap">
 {
   "imports": {
-    "react": "https://esm.sh/react@18.2.0",
-    "react/": "https://esm.sh/react@18.2.0/",
-    "react-dom": "https://esm.sh/react-dom@18.2.0",
-    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
-    "html2canvas": "https://esm.sh/html2canvas@1.4.1",
-    "lucide-react": "https://esm.sh/lucide-react@0.395.0?deps=react@18.2.0",
-    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/",
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "html2canvas": "https://aistudiocdn.com/html2canvas@^1.4.1",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0"
   }
 }
 </script>
@@ -104,7 +66,5 @@
 </head>
   <body class="bg-gray-50 text-slate-800 dark:bg-zinc-950 dark:text-zinc-200 min-h-screen antialiased selection:bg-indigo-500/30 selection:text-indigo-600 dark:selection:bg-amber-500/30 dark:selection:text-amber-400 transition-colors duration-300">
     <div id="root"></div>
-    <!-- Note: data-type="module" is required for Babel to handle ES6 imports inside TSX -->
-    <script type="text/babel" data-type="module" src="./index.tsx"></script>
 </body>
 </html>
