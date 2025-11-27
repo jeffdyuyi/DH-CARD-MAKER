@@ -6,6 +6,20 @@
     <title>匕首心卡牌工坊</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
+      // Global Error Handler for startup crashes (prevents silent black screen)
+      window.onerror = function(message, source, lineno, colno, error) {
+        const root = document.getElementById('root');
+        if (root && root.innerHTML === '') {
+          root.innerHTML = `
+            <div style="color: #ef4444; padding: 20px; font-family: monospace; background: #18181b; height: 100vh;">
+              <h2 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">Startup Error</h2>
+              <p>The application failed to start.</p>
+              <pre style="background: #27272a; padding: 1rem; border-radius: 0.5rem; overflow: auto; margin-top: 1rem;">${message}\n\n${error?.stack || ''}</pre>
+            </div>
+          `;
+        }
+      };
+
       tailwind.config = {
         darkMode: 'class',
         theme: {
@@ -15,14 +29,13 @@
                 850: '#1f1f22',
                 950: '#09090b',
               },
-              // Modern UI colors
               primary: {
-                500: '#3b82f6', // Blue
+                500: '#3b82f6',
                 600: '#2563eb',
               },
               surface: {
                 light: '#ffffff',
-                dark: '#18181b', // zinc-900
+                dark: '#18181b',
               }
             },
             fontFamily: {
@@ -42,7 +55,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" rel="stylesheet">
     <style>
-      /* Modern sleek scrollbar */
       ::-webkit-scrollbar {
         width: 6px;
         height: 6px;
@@ -63,25 +75,27 @@
       .dark ::-webkit-scrollbar-thumb:hover {
         background: #52525b; 
       }
-      
       body {
         font-family: 'Noto Sans SC', sans-serif;
       }
     </style>
+    <!-- Use esm.sh for stable, public module loading compatible with GitHub Pages -->
 
-<link rel="stylesheet" href="/index.css">
-  <script type="importmap">
+  <link rel="stylesheet" href="/index.css">
+    <script type="importmap">
 {
   "imports": {
-    "react/": "https://aistudiocdn.com/react@^19.2.0/",
-    "react": "https://aistudiocdn.com/react@^19.2.0",
-    "html2canvas": "https://aistudiocdn.com/html2canvas@^1.4.1",
-    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "react": "https://esm.sh/react@18.2.0",
+    "react/": "https://esm.sh/react@18.2.0/",
+    "react-dom": "https://esm.sh/react-dom@18.2.0",
+    "react-dom/client": "https://esm.sh/react-dom@18.2.0/client",
+    "html2canvas": "https://esm.sh/html2canvas@1.4.1",
+    "lucide-react": "https://esm.sh/lucide-react@0.395.0?deps=react@18.2.0",
     "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
   }
 }
 </script>
-  <script type="module" crossorigin src="/assets/index-eDdm0Kwb.js"></script>
+  <script type="module" crossorigin src="/assets/index-BYo19fLv.js"></script>
 </head>
   <body class="bg-gray-50 text-slate-800 dark:bg-zinc-950 dark:text-zinc-200 min-h-screen antialiased selection:bg-indigo-500/30 selection:text-indigo-600 dark:selection:bg-amber-500/30 dark:selection:text-amber-400 transition-colors duration-300">
     <div id="root"></div>
