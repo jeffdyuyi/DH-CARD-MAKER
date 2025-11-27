@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>匕首心卡牌工坊</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              zinc: {
+                850: '#1f1f22',
+                950: '#09090b',
+              },
+              // Modern UI colors
+              primary: {
+                500: '#3b82f6', // Blue
+                600: '#2563eb',
+              },
+              surface: {
+                light: '#ffffff',
+                dark: '#18181b', // zinc-900
+              }
+            },
+            fontFamily: {
+              sans: ['"Noto Sans SC"', 'system-ui', 'sans-serif'],
+              serif: ['"Noto Serif SC"', 'serif'],
+            },
+            boxShadow: {
+              'glow': '0 0 20px -5px rgba(59, 130, 246, 0.5)',
+              'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+            }
+          }
+        }
+      }
+    </script>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;700&family=Noto+Serif+SC:wght@700&display=swap" rel="stylesheet">
+    <style>
+      /* Modern sleek scrollbar */
+      ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: transparent; 
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #cbd5e1; 
+        border-radius: 99px;
+      }
+      .dark ::-webkit-scrollbar-thumb {
+        background: #3f3f46; 
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #94a3b8; 
+      }
+      .dark ::-webkit-scrollbar-thumb:hover {
+        background: #52525b; 
+      }
+      
+      body {
+        font-family: 'Noto Sans SC', sans-serif;
+      }
+    </style>
+
+<link rel="stylesheet" href="/index.css">
+  <script type="importmap">
+{
+  "imports": {
+    "react/": "https://aistudiocdn.com/react@^19.2.0/",
+    "react": "https://aistudiocdn.com/react@^19.2.0",
+    "html2canvas": "https://aistudiocdn.com/html2canvas@^1.4.1",
+    "lucide-react": "https://aistudiocdn.com/lucide-react@^0.555.0",
+    "react-dom/": "https://aistudiocdn.com/react-dom@^19.2.0/"
+  }
+}
+</script>
+  <script type="module" crossorigin src="/assets/index-eDdm0Kwb.js"></script>
+</head>
+  <body class="bg-gray-50 text-slate-800 dark:bg-zinc-950 dark:text-zinc-200 min-h-screen antialiased selection:bg-indigo-500/30 selection:text-indigo-600 dark:selection:bg-amber-500/30 dark:selection:text-amber-400 transition-colors duration-300">
+    <div id="root"></div>
+</body>
+</html>
