@@ -9,7 +9,7 @@
       // Global Error Handler for startup crashes (prevents silent black screen)
       window.onerror = function(message, source, lineno, colno, error) {
         const root = document.getElementById('root');
-        if (root && root.innerHTML === '') {
+        if (root && (!root.innerHTML || root.innerHTML === '')) {
           root.innerHTML = `
             <div style="color: #ef4444; padding: 20px; font-family: monospace; background: #18181b; height: 100vh;">
               <h2 style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1rem;">Startup Error</h2>
@@ -95,7 +95,7 @@
   }
 }
 </script>
-  <script type="module" crossorigin src="/assets/index-BYo19fLv.js"></script>
+  <script type="module" crossorigin src="/assets/index-CYCthhyi.js"></script>
 </head>
   <body class="bg-gray-50 text-slate-800 dark:bg-zinc-950 dark:text-zinc-200 min-h-screen antialiased selection:bg-indigo-500/30 selection:text-indigo-600 dark:selection:bg-amber-500/30 dark:selection:text-amber-400 transition-colors duration-300">
     <div id="root"></div>
